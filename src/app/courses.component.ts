@@ -4,15 +4,11 @@ import { CoursesService } from "./courses.service";
 @Component({
   selector: "courses",
   template: `
-    <button
-      [style.backgroundColor]="isActive ? 'blue' : 'white'"
-      class="btn btn-primary"
-      [class.active]="isActive"
-    >
-      Save
-    </button>
+    <button (click)="onSave($event)">Save</button>
   `
 })
 export class CoursesComponent {
-  isActive = true;
+  onSave($event) {
+    console.log("Button was clicked", $event);
+  }
 }

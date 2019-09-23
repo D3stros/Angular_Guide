@@ -4,17 +4,19 @@ import { CoursesService } from "./courses.service";
 @Component({
   selector: "courses",
   template: `
-    <input
-      [value]="email"
-      (keyup.enter)="email = $event.target.value; onKeyUp()"
-    />
-    <input [(ngModel)]="email" (keyup.enter)="onKeyUp()" />
+    {{ course.title | uppercase | lowercase }} <br />
+    {{ course.students | number }} <br />
+    {{ course.rating | number: "1.1-1" }} <br />
+    {{ course.price | currency: "AUD" }} <br />
+    {{ course.releaseDate | date: "shortDate" }}
   `
 })
 export class CoursesComponent {
-  email = "testmail";
-
-  onKeyUp() {
-    console.log(this.email);
-  }
+  course = {
+    title: "The complete angular course",
+    rating: 4.0756,
+    students: 10500,
+    price: 199.95,
+    releaseDate: new Date(2018, 3, 10)
+  };
 }

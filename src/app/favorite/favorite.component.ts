@@ -4,7 +4,13 @@ import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
   selector: "favorite",
   templateUrl: "./favorite.component.html",
   styleUrls: ["./favorite.component.css"],
-  styles: [``]
+  styles: [
+    `
+      .fas {
+        color: green;
+      }
+    `
+  ]
 })
 export class FavoriteComponent {
   @Input("isFavorite") isSelected: boolean;

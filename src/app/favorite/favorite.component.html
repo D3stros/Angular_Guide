@@ -1,7 +1,6 @@
 <i
   class="far"
-  [class.fa-star]="isFavorite"
-  [class.fa-star-half]="!isFavorite"
+  [class]="isFavorite ? 'fas fa-star' : 'far fa-star'"
   (click)="onClick()"
   >Hi
 </i>

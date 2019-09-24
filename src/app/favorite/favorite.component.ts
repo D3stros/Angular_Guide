@@ -10,8 +10,7 @@ import {
 @Component({
   selector: "favorite",
   templateUrl: "./favorite.component.html",
-  styleUrls: ["./favorite.component.css"],
-  encapsulation: ViewEncapsulation.Emulated
+  styleUrls: ["./favorite.component.css"]
 })
 export class FavoriteComponent {
   @Input("isFavorite") isSelected: boolean;

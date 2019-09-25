@@ -7,17 +7,17 @@ import { FavoriteChangedEventArgs } from "./favorite/favorite.component";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
-  courses = [
-    { id: 1, name: "course 1" },
-    { id: 2, name: "course 2" },
-    { id: 3, name: "course 3" }
-  ];
+  courses;
 
-  onAdd() {
-    this.courses.push({ id: 4, name: "course4" });
+  loadCourses() {
+    this.courses = [
+      { id: 1, name: "course 1" },
+      { id: 2, name: "course 2" },
+      { id: 3, name: "course 3" }
+    ];
   }
 
-  onChange(course) {
-    course.name = "Updated";
+  trackCourse(index, course) {
+    return course ? course.id : undefined;
   }
 }

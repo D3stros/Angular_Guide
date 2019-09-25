@@ -2,6 +2,6 @@
 <ul>
   <li *ngFor="let course of courses; index as i; even as isEven">
     {{ i }}-{{ course.name }}- <span *ngIf="isEven">(Even)</span>
-    <button (click)="onRemove(course)">Remove</button>
+    <button (click)="onChange(course)">Remove</button>
   </li>
 </ul>

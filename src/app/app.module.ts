@@ -14,16 +14,19 @@ import { AuthorsComponent } from "./authors/authors.component";
 import { AuthorsService } from "./authors.service";
 import { SummaryPipe } from "./summary.pipe";
 import { FavoriteComponent } from "./favorite/favorite.component";
-import { TitleCasePipe } from './title-case.pipe';
-import { PanelComponent } from './panel/panel.component';
-import { LikeComponent } from './like/like.component';
-import { InputFormatDirective } from './input-format.directive';
-import { ZippyComponent } from './zippy/zippy.component';
-import { ContactFormComponent } from './contact-form/contact-form.component';
+import { TitleCasePipe } from "./title-case.pipe";
+import { PanelComponent } from "./panel/panel.component";
+import { LikeComponent } from "./like/like.component";
+import { InputFormatDirective } from "./input-format.directive";
+import { ZippyComponent } from "./zippy/zippy.component";
+import { ContactFormComponent } from "./contact-form/contact-form.component";
+import { NewCourseFormComponent } from "./new-course-form/new-course-form.component";
+import { SignupFormComponent } from "./signup-form/signup-form.component";
 
 @NgModule({
   declarations: [
     AppComponent,
+    SignupFormComponent,
     CoursesComponent,
     CourseComponent,
     AuthorsComponent,
@@ -34,7 +37,8 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
     LikeComponent,
     InputFormatDirective,
     ZippyComponent,
-    ContactFormComponent
+    ContactFormComponent,
+    NewCourseFormComponent
   ],
   imports: [BrowserModule, FormsModule, FontAwesomeModule],
   providers: [CoursesService, AuthorsService],

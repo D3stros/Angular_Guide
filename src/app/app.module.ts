@@ -1,5 +1,5 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NgModule } from "@angular/core";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -40,7 +40,7 @@ import { SignupFormComponent } from "./signup-form/signup-form.component";
     ContactFormComponent,
     NewCourseFormComponent
   ],
-  imports: [BrowserModule, FormsModule, FontAwesomeModule],
+  imports: [BrowserModule, FormsModule, FontAwesomeModule, ReactiveFormsModule],
   providers: [CoursesService, AuthorsService],
   bootstrap: [AppComponent]
 })

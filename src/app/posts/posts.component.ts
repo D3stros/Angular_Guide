@@ -13,6 +13,12 @@ export class PostsComponent implements OnInit {
 
   constructor(private http: HttpClient) {}
 
+  ngOnInit() {
+    this.http.get(this.url).subscribe(response => {
+      this.posts = response;
+    });
+  }
+
   createPost(input: HTMLInputElement) {
     let post: any = { title: input.value };
     input.value = "";
@@ -34,11 +40,6 @@ export class PostsComponent implements OnInit {
     this.http.delete(this.url + "/" + post.id).subscribe(response => {
       let index = this.posts.indexOf(post);
       this.posts.splice(index, 1);
-    });
-  }
-  ngOnInit() {
-    this.http.get(this.url).subscribe(response => {
-      this.posts = response;
     });
   }
 }

@@ -22,7 +22,9 @@ import { ZippyComponent } from "./zippy/zippy.component";
 import { ContactFormComponent } from "./contact-form/contact-form.component";
 import { NewCourseFormComponent } from "./new-course-form/new-course-form.component";
 import { SignupFormComponent } from "./signup-form/signup-form.component";
-import { ChangePasswordComponent } from './change-password/change-password.component';
+import { ChangePasswordComponent } from "./change-password/change-password.component";
+import { PostsComponent } from "./posts/posts.component";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -40,9 +42,16 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     ZippyComponent,
     ContactFormComponent,
     NewCourseFormComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    PostsComponent
   ],
-  imports: [BrowserModule, FormsModule, FontAwesomeModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    FontAwesomeModule,
+    ReactiveFormsModule,
+    HttpClientModule
+  ],
   providers: [CoursesService, AuthorsService],
   bootstrap: [AppComponent]
 })

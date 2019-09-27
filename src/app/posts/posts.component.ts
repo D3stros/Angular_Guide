@@ -25,4 +25,9 @@ export class PostsComponent {
       this.posts.splice(0, 0, post);
     });
   }
+
+  updatePost(post) {
+    this.http.patch(this.url, JSON.stringify({ isRead: true }));
+    this.http.put(this.url, JSON.stringify(post));
+  }
 }

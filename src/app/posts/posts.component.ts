@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 
@@ -7,21 +7,17 @@ import { HttpClient } from "@angular/common/http";
   templateUrl: "./posts.component.html",
   styleUrls: ["./posts.component.css"]
 })
-export class PostsComponent {
+export class PostsComponent implements OnInit {
   posts;
   private url = "https://jsonplaceholder.typicode.com/posts";
 
-  constructor(private http: HttpClient) {
-    http.get(this.url).subscribe(response => {
-      this.posts = response;
-    });
-  }
+  constructor(private http: HttpClient) {}
 
   createPost(input: HTMLInputElement) {
     let post: any = { title: input.value };
     input.value = "";
     this.http.post(this.url, JSON.stringify(post)).subscribe(response => {
-      post["id"] = response.id;
+      post["id"] = response;
       this.posts.splice(0, 0, post);
     });
   }
@@ -32,5 +28,17 @@ export class PostsComponent {
       .subscribe(response => {
         console.log(response);
       });
+  }
+
+  deletePost(post) {
+    this.http.delete(this.url + "/" + post.id).subscribe(response => {
+      let index = this.posts.indexOf(post);
+      this.posts.splice(index, 1);
+    });
+  }
+  ngOnInit() {
+    this.http.get(this.url).subscribe(response => {
+      this.posts = response;
+    });
   }
 }

@@ -8,5 +8,12 @@ import { HttpClient } from "@angular/common/http";
   styleUrls: ["./posts.component.css"]
 })
 export class PostsComponent {
-  constructor(http: HttpClient) {}
+  posts;
+  constructor(http: HttpClient) {
+    http
+      .get("https://jsonplaceholder.typicode.com/posts")
+      .subscribe(response => {
+        this.posts = response;
+      });
+  }
 }

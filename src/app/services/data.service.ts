@@ -49,7 +49,8 @@ export class DataService {
   }
 
   private handleError(error: Response) {
-    if (error.status === 400) return Observable.throw(new BadInput());
+    if (error.status === 400)
+      return Observable.throw(new BadInput(error.json()));
 
     if (error.status === 404) return Observable.throw(new NotFoundError());
 

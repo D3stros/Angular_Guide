@@ -43,7 +43,7 @@ export class PostsComponent implements OnInit {
 
   deletePost(post) {
     this.service.delete(post.id).subscribe(
-      response => {
+      () => {
         let index = this.posts.indexOf(post);
         this.posts.splice(index, 1);
       },

@@ -1,6 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { NgModule } from "@angular/core";
+import { NgModule, ErrorHandler } from "@angular/core";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
@@ -27,6 +27,7 @@ import { PostsComponent } from "./posts/posts.component";
 import { HttpClientModule } from "@angular/common/http";
 import { PostService } from "./services/post.service";
 import { DataService } from "./services/data.service";
+import { AppErrorHandler } from "./common/app-error-handler";
 
 @NgModule({
   declarations: [
@@ -54,7 +55,13 @@ import { DataService } from "./services/data.service";
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [DataService, PostService, CoursesService, AuthorsService],
+  providers: [
+    DataService,
+    PostService,
+    CoursesService,
+    AuthorsService,
+    { provide: ErrorHandler, useClass: AppErrorHandler }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { map, catchError } from "rxjs/operators";
-import { Observable } from "rxjs";
+import { Observable, throwError } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 
 @Injectable()
@@ -47,6 +47,6 @@ export class DataService {
 
   private handleError(error: Response) {
     console.error(error);
-    return Observable.throw(error);
+    return throwError(error);
   }
 }

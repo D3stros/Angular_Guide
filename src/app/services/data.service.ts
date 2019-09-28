@@ -2,6 +2,9 @@ import { Injectable } from "@angular/core";
 import { map, catchError } from "rxjs/operators";
 import { Observable, throwError } from "rxjs";
 import { HttpClient } from "@angular/common/http";
+import { NotFoundError } from "../common/not-found-error";
+import { AppError } from "../common/app-error";
+import { BadInput } from "../common/bad-input";
 
 @Injectable()
 export class DataService {
@@ -46,7 +49,10 @@ export class DataService {
   }
 
   private handleError(error: Response) {
-    console.error(error);
-    return throwError(error);
+    if (error.status === 400) return Observable.throw(new BadInput());
+
+    if (error.status === 404) return Observable.throw(new NotFoundError());
+
+    return Observable.throw(new AppError(error));
   }
 }

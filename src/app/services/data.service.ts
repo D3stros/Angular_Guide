@@ -1,10 +1,10 @@
-import { Injectable } from "@angular/core";
-import { map, catchError } from "rxjs/operators";
-import { Observable, throwError } from "rxjs";
-import { HttpClient } from "@angular/common/http";
-import { NotFoundError } from "../common/not-found-error";
-import { AppError } from "../common/app-error";
-import { BadInput } from "../common/bad-input";
+import { Injectable } from '@angular/core';
+import { map, catchError } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { NotFoundError } from '../common/not-found-error';
+import { AppError } from '../common/app-error';
+import { BadInput } from '../common/bad-input';
 
 @Injectable()
 export class DataService {
@@ -30,7 +30,7 @@ export class DataService {
 
   update(resource) {
     return this.http
-      .patch(this.url + "/" + resource.id, JSON.stringify({ isRead: true }))
+      .patch(this.url + '/' + resource.id, JSON.stringify({ isRead: true }))
       .pipe(
         map((response: any) => {
           return response;
@@ -40,7 +40,7 @@ export class DataService {
   }
 
   delete(id) {
-    return this.http.delete(this.url + "/" + id).pipe(
+    return this.http.delete(this.url + '/' + id).pipe(
       map((response: any) => {
         return response;
       }),
@@ -49,10 +49,11 @@ export class DataService {
   }
 
   private handleError(error: Response) {
-    if (error.status === 400)
+    if (error.status === 400) {
       return Observable.throw(new BadInput(error.json()));
+    }
 
-    if (error.status === 404) return Observable.throw(new NotFoundError());
+    if (error.status === 404) { return Observable.throw(new NotFoundError()); }
 
     return Observable.throw(new AppError(error));
   }

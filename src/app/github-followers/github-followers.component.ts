@@ -1,15 +1,15 @@
-import { Component, OnInit } from "@angular/core";
-import { GithubFollowersService } from "../github-followers.service";
-import { ActivatedRoute } from "@angular/router";
-import { Observable } from "rxjs/Observable";
-import "rxjs/add/observable/combineLatest";
-import "rxjs/add/operator/map";
-import "rxjs/add/operator/switchMap";
+import { Component, OnInit } from '@angular/core';
+import { GithubFollowersService } from '../github-followers.service';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/combineLatest';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/switchMap';
 
 @Component({
-  selector: "github-followers",
-  templateUrl: "./github-followers.component.html",
-  styleUrls: ["./github-followers.component.css"]
+  selector: 'github-followers',
+  templateUrl: './github-followers.component.html',
+  styleUrls: ['./github-followers.component.css']
 })
 export class GithubFollowersComponent implements OnInit {
   followers: any[];
@@ -21,8 +21,8 @@ export class GithubFollowersComponent implements OnInit {
   ngOnInit() {
     Observable.combineLatest([this.route.paramMap, this.route.queryParamMap])
       .switchMap(combined => {
-        let id = combined[0].get("id");
-        let page = combined[1].get("page");
+        const id = combined[0].get('id');
+        const page = combined[1].get('page');
 
         return this.service.getAll();
       })

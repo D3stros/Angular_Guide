@@ -5,16 +5,16 @@ import {
   Output,
   EventEmitter,
   ViewEncapsulation
-} from "@angular/core";
+} from '@angular/core';
 
 @Component({
-  selector: "favorite",
-  templateUrl: "./favorite.component.html",
-  styleUrls: ["./favorite.component.css"]
+  selector: 'favorite',
+  templateUrl: './favorite.component.html',
+  styleUrls: ['./favorite.component.css']
 })
 export class FavoriteComponent {
-  @Input("isFavorite") isSelected: boolean;
-  @Output("change") click = new EventEmitter();
+  @Input('isFavorite') isSelected: boolean;
+  @Output('change') click = new EventEmitter();
 
   onClick() {
     this.isSelected = !this.isSelected;
